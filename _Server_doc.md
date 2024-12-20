@@ -93,13 +93,14 @@ API routes define endpoints where clients (like web apps) send requests. Express
 
 ##### Example:
 ```javascript
-app.get('/api/products', (req, res) => {
-  res.json({ message: 'Product list' });
-});
-
-app.post('/api/products', (req, res) => {
-  const productData = req.body;  // Access data sent in the request body
-  res.status(201).json({ message: 'Product created', data: productData });
+router.get('/', async (req, res) => {
+  try {
+    const [categories] = await db.query('SELECT * FROM categories');
+    res.json(categories);
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+    res.status(500).json({ error: 'Failed to fetch categories' });
+  }
 });
 ```
 - **`GET /api/products`**: Returns a list of products.
