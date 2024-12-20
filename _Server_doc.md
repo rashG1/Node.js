@@ -1,5 +1,5 @@
 
-//code start
+```javascript
 
 import 'dotenv/config';
 import express from 'express';
@@ -29,7 +29,7 @@ app.listen(PORT, () => {
   console.log(Server is running on http://localhost:${PORT});
 }); exlplain all the things in here 
 
-// code end
+---
 
 
 Describe in details:-
